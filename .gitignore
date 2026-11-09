@@ -1,0 +1,24 @@
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 暫存與報表（不要上傳）
+*.log
+*.tmp
+_probe/
+_work/
+backup_*.xlsx
+_test_*.xlsx
+
+# 機密：絕對不要推到 GitHub
+.env
+*.key
+*.pem
+credentials*.json
+token*.txt
