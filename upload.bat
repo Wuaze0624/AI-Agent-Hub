@@ -1,16 +1,27 @@
 @echo off
 chcp 65001 >nul
 cd /d "%~dp0"
-if "%~1"=="" (
-  echo 用法：上傳.bat "這次改了什麼"
-  echo 範例：上傳.bat 修復下載功能的錯誤
-  pause
-  exit /b
-)
-echo === 上傳更新到 GitHub ===
-git add -A
-git commit -m "%~1"
-git push
+echo === Upload AI-Agent Hub to GitHub ===
 echo.
-echo 完成。按任意鍵關閉。
+git add -A
+git status --short
+echo.
+set "MSG="
+set /p MSG=Enter what you changed, then press Enter: 
+if "%MSG%"=="" (
+  echo No message entered. Nothing uploaded.
+  goto end
+)
+git commit -m "%MSG%"
+if errorlevel 1 goto fail
+git push
+if errorlevel 1 goto fail
+echo.
+echo Done.
+goto end
+:fail
+echo.
+echo UPLOAD FAILED. Read the message above.
+:end
+echo Press any key to close.
 pause >nul

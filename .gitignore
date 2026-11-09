@@ -11,6 +11,7 @@ venv/
 # 暫存與報表（不要上傳）
 *.log
 *.tmp
+_scratch/
 _probe/
 _work/
 backup_*.xlsx
